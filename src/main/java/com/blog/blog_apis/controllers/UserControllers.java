@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.blog.blog_apis.entities.User;
 import com.blog.blog_apis.payloads.ApiResponse;
 import com.blog.blog_apis.payloads.UserDto;
 import com.blog.blog_apis.services.UserServices;
@@ -53,7 +54,8 @@ public class UserControllers {
     //Get User by ID
     @GetMapping("/{userId}")
     public ResponseEntity<UserDto> getUserByID(@PathVariable Integer userId){
-        return ResponseEntity.ok(this.userServices.getUserById(userId));
+        UserDto userDto = this.userServices.getUserById(userId);
+        return new ResponseEntity<UserDto>(userDto,HttpStatus.OK);
 
     }
     // Get all Users
