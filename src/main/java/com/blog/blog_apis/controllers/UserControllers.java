@@ -32,14 +32,14 @@ public class UserControllers {
     @PostMapping("/")
     public ResponseEntity<UserDto> createUser(@Valid @RequestBody UserDto userDto){
         UserDto createUserDto = this.userServices.createUser(userDto);
-        return new ResponseEntity<>(createUserDto,HttpStatus.CREATED);
+        return new ResponseEntity<UserDto>(createUserDto,HttpStatus.CREATED);
     }
 
     //Update User
     @PutMapping("/{userId}")
     public ResponseEntity<UserDto> updateUser(@Valid @RequestBody UserDto userDto,@PathVariable Integer userId){
         UserDto updaUserDto = this.userServices.updateUser(userDto, userId);
-        return ResponseEntity.ok(updaUserDto);
+        return new ResponseEntity<UserDto>(updaUserDto,HttpStatus.OK);
     }
 
 
